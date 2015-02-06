@@ -91,6 +91,7 @@
 							<wsdlOptions>
 								<wsdlOption>
 									<wsdl>${basedir}/src/main/resources/wsdl/HelloWorldService.wsdl</wsdl>
+									<wsdlLocation>classpath:wsdl/HelloWorldService.wsdl</wsdlLocation>
 								</wsdlOption>
 							</wsdlOptions>
 						</configuration>
