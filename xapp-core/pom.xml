@@ -81,7 +81,7 @@
 			<plugin>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-codegen-plugin</artifactId>
-				<!-- version>${cxf.version}</version -->
+				
 				<executions>
 					<execution>
 						<id>generate-sources</id>
@@ -90,7 +90,7 @@
 							<sourceRoot>${project.build.directory}/generated/cxf</sourceRoot>
 							<wsdlOptions>
 								<wsdlOption>
-									<wsdl>${basedir}/src/main/resources/wsdl/myTestService.wsdl</wsdl>
+									<wsdl>${basedir}/src/main/resources/wsdl/HelloWorldService.wsdl</wsdl>
 								</wsdlOption>
 							</wsdlOptions>
 						</configuration>
