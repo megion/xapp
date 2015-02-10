@@ -2,13 +2,17 @@ package org.megion.xapp.core.service;
 
 import org.megion.xapp.core.entity.Member;
 import org.megion.xapp.core.repository.MemberRepository;
+import org.megion.xapp.soapserver.service.HelloWorldService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class MemberServiceImpl implements MemberService {
-	
+
+	@Autowired
+	private HelloWorldService helloWorldService;
+
 	@Autowired
 	private MemberRepository memberRepository;
 
@@ -16,6 +20,9 @@ public class MemberServiceImpl implements MemberService {
 	@Transactional
 	public void register(Member member) {
 		memberRepository.register(member);
+		
+		String msg = helloWorldService.sayHi("ilya");
+    	System.out.println("message " + msg);
 	}
 
 }

@@ -1,14 +1,15 @@
 package org.megion.xapp.web.controller;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.validation.Valid;
 
 import org.megion.xapp.core.entity.Member;
 import org.megion.xapp.core.repository.MemberRepository;
 import org.megion.xapp.core.service.MemberService;
-import org.megion.xapp.soapserver.service.HelloWorldService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.UnexpectedRollbackException;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,14 +19,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(value = "/")
 public class MemberController {
+	
+	private static final Logger LOG = 
+	        Logger.getLogger(MemberController.class.getName());
+	
     @Autowired
     private MemberRepository memberRepository;
     
     @Autowired
     private MemberService memberService;
-    
-    @Autowired
-    private HelloWorldService helloWorldService; 
 
     @RequestMapping(method = RequestMethod.GET)
     public String displaySortedMembers(Model model) {
@@ -39,12 +41,10 @@ public class MemberController {
     public String registerNewMember(@Valid @ModelAttribute("newMember") Member newMember, BindingResult result, Model model) {
         if (!result.hasErrors()) {
             try {
-            	String msg = helloWorldService.sayHi("ilya");
-            	System.out.println("message " + msg);
-            	
             	memberService.register(newMember);
                 return "redirect:/";
-            } catch (UnexpectedRollbackException e) {
+            } catch (Exception e) {
+            	LOG.log(Level.SEVERE, e.getMessage(), e.getCause());
                 model.addAttribute("members", memberRepository.findAllOrderedByName());
                 model.addAttribute("error", e.getCause().getCause());
                 return "index";

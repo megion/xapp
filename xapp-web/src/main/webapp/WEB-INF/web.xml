@@ -8,7 +8,7 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:/META-INF/spring/applicationContext.xml,
                      classpath:/META-INF/spring/datasource.xml,
-                     classpath:/META-INF/spring/wsdl.xml
+                     classpath:/META-INF/spring/jaxws-client.xml
         </param-value>
     </context-param>
 
@@ -30,4 +30,5 @@
         <servlet-name>xapp</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
 </web-app>

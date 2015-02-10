@@ -94,6 +94,7 @@
             </c:otherwise>
         </c:choose>
     </div>
+    
     <div id="aside">
         <p>Learn more about JBoss Enterprise Application Platform 6.</p>
         <ul>
