@@ -1,4 +1,4 @@
-package org.megion.xapp.soapserver.service;
+package org.megion.xapp.soapserver.core.service;
 
 import javax.jws.WebService;
 

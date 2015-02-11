@@ -1,8 +1,8 @@
-package org.megion.xapp.soapserver.service;
+package org.megion.xapp.soapserver.core.service;
 
 import javax.jws.WebService;
 
-@WebService(endpointInterface = "org.megion.xapp.soapserver.service.HelloWorldService")
+@WebService(endpointInterface = "org.megion.xapp.soapserver.core.service.HelloWorldService")
 public class HelloWorldServiceImpl implements HelloWorldService {
 
     public String sayHi(String text) {

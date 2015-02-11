@@ -13,11 +13,11 @@
 		location="classpath:/META-INF/spring/jaxws-client.properties"
 		ignore-unresolvable="true" />
 
-	<bean id="client" class="org.megion.xapp.soapserver.service.HelloWorldService"
+	<bean id="client" class="org.megion.xapp.soapserver.core.service.HelloWorldService"
 		factory-bean="clientFactory" factory-method="create" />
 	<bean id="clientFactory" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
 		<property name="serviceClass"
-			value="org.megion.xapp.soapserver.service.HelloWorldService" />
+			value="org.megion.xapp.soapserver.core.service.HelloWorldService" />
 		<property name="address"
 			value="${jaxws.service.helloWorld.address}" />
 	</bean>

@@ -10,101 +10,18 @@
 
 	<groupId>com.megion.xapp</groupId>
 	<artifactId>xapp-soapserver</artifactId>
-	<packaging>war</packaging>
-	<name>xapp-soapserver web server</name>
+	<packaging>pom</packaging>
+	<name>xapp-soapserver (parent pom)</name>
 
 	<properties>
 		<jaxws.service.helloWorld.address>http://localhost:9090/service/helloWorldService</jaxws.service.helloWorld.address>
+		<jetty.port>9090</jetty.port>
 	</properties>
 
-	<dependencies>
-	    <dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context-support</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-		</dependency>
-		<!-- dependency> <groupId>junit</groupId> <artifactId>junit</artifactId> 
-			<version>3.8.1</version> <scope>test</scope> </dependency> <dependency> <groupId>org.apache.cxf</groupId> 
-			<artifactId>cxf-rt-bindings-soap</artifactId> </dependency -->
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-frontend-jaxws</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-transports-http</artifactId>
-		</dependency>
-		<!-- Jetty is needed if you're are not using the CXFServlet -->
-		<!-- dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-transports-http-jetty</artifactId>
-		</dependency -->
-
-	</dependencies>
-
-	<build>
-		<finalName>${project.artifactId}</finalName>
-
-		<plugins>
-			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<configuration>
-					<connectors>
-						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-							<port>9090</port>
-						</connector>
-					</connectors>
-				</configuration>
-			</plugin>
-
-            <!-- java To WS - generate wsdl for service class -->
-			<plugin>
-				<groupId>org.apache.cxf</groupId>
-				<artifactId>cxf-java2ws-plugin</artifactId>
-				<version>${version.cxf}</version>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.cxf</groupId>
-						<artifactId>cxf-rt-frontend-jaxws</artifactId>
-						<version>${version.cxf}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.cxf</groupId>
-						<artifactId>cxf-rt-frontend-simple</artifactId>
-						<version>${version.cxf}</version>
-					</dependency>
-				</dependencies>
-
-				<executions>
-					<execution>
-						<id>process-classes</id>
-						<phase>process-classes</phase>
-						<configuration>
-							<className>org.megion.xapp.soapserver.service.HelloWorldService</className>
-							<genWsdl>true</genWsdl>
-							<verbose>true</verbose>
-							<address>${jaxws.service.helloWorld.address}</address>
-						</configuration>
-						<goals>
-							<goal>java2ws</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-		</plugins>
-
-	</build>
+	<modules>
+		<module>soapserver-web</module>
+		<module>soapserver-core</module>
+		<module>soapserver-wsdl</module>
+	</modules>
+	
 </project>
