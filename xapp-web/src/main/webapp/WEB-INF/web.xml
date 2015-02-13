@@ -4,12 +4,15 @@
          metadata-complete="true" version="3.0">
     <display-name>X Application</display-name>
 
+    <!-- Application context is empty - all context defined in beanRefContext.xml -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:/META-INF/spring/datasource.xml,
-                     classpath:/META-INF/spring/jaxws-client.xml,
-                     classpath:/META-INF/spring/applicationContext.xml
-        </param-value>
+        <param-value></param-value>
+    </context-param>
+    
+    <context-param>
+        <param-name>parentContextKey</param-name>
+        <param-value>beanFactory</param-value>
     </context-param>
 
     <listener>

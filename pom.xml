@@ -10,8 +10,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.6</maven.compiler.source>
-		<maven.compiler.target>1.6</maven.compiler.target>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
 
 		<version.spring>3.2.9.RELEASE</version.spring>
 
@@ -32,6 +32,11 @@
 		<version.slf4j>1.7.5</version.slf4j>
 
 		<version.cxf>3.0.3</version.cxf>
+		<version.javaee>6.0</version.javaee>
+		
+		<version.ear.plugin>2.6</version.ear.plugin>
+        <version.ejb.plugin>2.3</version.ejb.plugin>
+        <version.surefire.plugin>2.10</version.surefire.plugin>
 	</properties>
 
 	<dependencyManagement>
@@ -208,13 +213,21 @@
 				<artifactId>cxf-rt-transports-http-jetty</artifactId>
 				<version>${version.cxf}</version>
 			</dependency>
-			
+
+			<dependency>
+				<groupId>javax</groupId>
+				<artifactId>javaee-api</artifactId>
+				<version>${version.javaee}</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 
 	<modules>
 		<module>xapp-web</module>
 		<module>xapp-core</module>
+		<module>xapp-ejb</module>
+		<module>xapp-resources</module>
 		<module>xapp-soapserver</module>
 	</modules>
 </project>
