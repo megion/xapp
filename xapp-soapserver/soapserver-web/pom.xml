@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.megion.xapp</groupId>
 		<artifactId>xapp-soapserver</artifactId>
-		<version>2.0</version>
+		<version>${version.xapp.last}</version>
 	</parent>
 
 	<groupId>com.megion.xapp.soapserver</groupId>
@@ -34,7 +34,7 @@
 		<dependency>
 			<groupId>com.megion.xapp.soapserver</groupId>
 			<artifactId>soapserver-core</artifactId>
-			<version>2.0</version>
+			<version>${project.version}</version>
 		</dependency>
 		
 		<!-- CXF -->

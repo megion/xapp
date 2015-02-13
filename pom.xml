@@ -5,16 +5,17 @@
 	<groupId>com.megion</groupId>
 	<artifactId>xapp</artifactId>
 	<name>xapp (parent pom)</name>
-	<version>2.0</version>
+	<version>${version.xapp.last}</version>
 	<packaging>pom</packaging>
 
 	<properties>
+	    <version.xapp.last>2.0</version.xapp.last>
+	    
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 
 		<version.spring>3.2.9.RELEASE</version.spring>
-
 		<version.hibernate>4.2.10.Final</version.hibernate>
 		<version.hibernate.validator>4.3.1.Final</version.hibernate.validator>
 		<version.spring.data.jpa>1.6.0.RELEASE</version.spring.data.jpa>
@@ -37,11 +38,37 @@
 		<version.ear.plugin>2.6</version.ear.plugin>
         <version.ejb.plugin>2.3</version.ejb.plugin>
         <version.surefire.plugin>2.10</version.surefire.plugin>
+        
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
-
+            
+            <!-- Define the version of the EJB jar so that we don't need 
+                to repeat ourselves in every module -->
+            <dependency>
+                <groupId>com.megion</groupId>
+                <artifactId>xapp-ejb</artifactId>
+                <version>${project.version}</version>
+                <type>ejb</type>
+            </dependency>
+            
+            <dependency>
+                <groupId>com.megion</groupId>
+                <artifactId>xapp-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            
+            <!-- Define the version of the WAR so that we don't need to repeat 
+                ourselves in every module -->
+            <dependency>
+                <groupId>com.megion</groupId>
+                <artifactId>xapp-web</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+                <scope>compile</scope>
+            </dependency>
+            
 			<dependency>
 				<groupId>taglibs</groupId>
 				<artifactId>standard</artifactId>
@@ -228,6 +255,7 @@
 		<module>xapp-core</module>
 		<module>xapp-ejb</module>
 		<module>xapp-resources</module>
+		<module>xapp-ear</module>
 		<module>xapp-soapserver</module>
 	</modules>
 </project>

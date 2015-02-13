@@ -8,7 +8,7 @@
     <parent>
         <groupId>com.megion</groupId>
 		<artifactId>xapp</artifactId>
-		<version>2.0</version>
+		<version>${version.xapp.last}</version>
     </parent>
 
     <artifactId>xapp-ejb</artifactId>
@@ -26,7 +26,7 @@
         
         <!-- xapp-core -->
 		<dependency>
-			<groupId>com.megion.xapp</groupId>
+			<groupId>com.megion</groupId>
 			<artifactId>xapp-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
