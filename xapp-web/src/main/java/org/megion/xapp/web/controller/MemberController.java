@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.megion.xapp.core.entity.Member;
 import org.megion.xapp.core.repository.MemberRepository;
 import org.megion.xapp.core.service.MemberService;
+import org.megion.xapp.soapserver.core.service.HelloWorldService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +28,9 @@ public class MemberController {
     private MemberRepository memberRepository;
     
     @Autowired
+	private HelloWorldService helloWorldService;
+    
+    @Autowired
     private MemberService memberService;
 
     @RequestMapping(method = RequestMethod.GET)
@@ -42,6 +46,10 @@ public class MemberController {
         if (!result.hasErrors()) {
             try {
             	memberService.register(newMember);
+            	
+            	String msg = helloWorldService.sayHi("ilya");
+            	System.out.println("message " + msg);
+            	
                 return "redirect:/";
             } catch (Exception e) {
             	LOG.log(Level.SEVERE, e.getMessage(), e.getCause());

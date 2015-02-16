@@ -20,9 +20,6 @@ public class MemberServiceImpl implements MemberService {
 	@Transactional
 	public void register(Member member) {
 		memberRepository.register(member);
-		
-		String msg = helloWorldService.sayHi("ilya");
-    	System.out.println("message " + msg);
 	}
 
 }

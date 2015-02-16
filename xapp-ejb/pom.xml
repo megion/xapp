@@ -8,13 +8,15 @@
     <parent>
         <groupId>com.megion</groupId>
 		<artifactId>xapp</artifactId>
-		<version>${version.xapp.last}</version>
+		<relativePath>..</relativePath>
+		<version>2.2.1-SNAPSHOT</version>
     </parent>
 
+    <groupId>com.megion.xapp</groupId>
     <artifactId>xapp-ejb</artifactId>
     <packaging>ejb</packaging>
 
-    <name>xapp-core ejb</name>
+    <name>xapp-ejb</name>
 
     <dependencies>
         <!-- Import the JPA API, we use provided scope as the API is included in JBoss AS 7 -->
@@ -26,14 +28,25 @@
         
         <!-- xapp-core -->
 		<dependency>
-			<groupId>com.megion</groupId>
+			<groupId>com.megion.xapp</groupId>
 			<artifactId>xapp-core</artifactId>
-			<version>${project.version}</version>
 		</dependency>
-
     </dependencies>
 
     <build>
+        <!-- filter resources -->
+		
+		<filters>
+			<filter>../local.properties</filter>
+		</filters>
+		
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		
         <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
@@ -41,7 +54,7 @@
                 <version>${version.ejb.plugin}</version>
                 <configuration>
                     <!-- Tell Maven we are using EJB 3.1 -->
-                    <ejbVersion>3.1</ejbVersion>
+                    <ejbVersion>3.1</ejbVersion>             
                 </configuration>
             </plugin>
         </plugins>

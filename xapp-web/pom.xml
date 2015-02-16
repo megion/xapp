@@ -5,9 +5,11 @@
 	<parent>
 		<groupId>com.megion</groupId>
 		<artifactId>xapp</artifactId>
-		<version>${version.xapp.last}</version>
+		<relativePath>..</relativePath>
+		<version>2.2.1-SNAPSHOT</version>
 	</parent>
 
+    <groupId>com.megion.xapp</groupId>
 	<artifactId>xapp-web</artifactId>
 	<packaging>war</packaging>
 	<name>xapp-web web server</name>
@@ -41,11 +43,30 @@
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
+			<!-- dependency from core -->
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-beans</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-core</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-context</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-expression</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-aop</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		
         <!-- Jackson -->
@@ -56,17 +77,6 @@
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-core-asl</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-		</dependency>
-
-		<!-- CXF -->
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-transports-http</artifactId>
 		</dependency>
 
 		<dependency>
@@ -86,7 +96,7 @@
 			</activation>
 			<dependencies>
 				<dependency>
-					<groupId>com.megion</groupId>
+					<groupId>com.megion.xapp</groupId>
 					<artifactId>xapp-core</artifactId>
 				</dependency>
 			</dependencies>
@@ -94,9 +104,15 @@
 
 		<profile>
 			<id>prom</id>
+			<activation>
+				<property>
+					<name>promEnabled</name>
+					<value>true</value>
+				</property>
+			</activation>
 			<dependencies>
 				<dependency>
-					<groupId>com.megion</groupId>
+					<groupId>com.megion.xapp</groupId>
 					<artifactId>xapp-ejb</artifactId>
 					<type>ejb</type>
 					<scope>provided</scope>
