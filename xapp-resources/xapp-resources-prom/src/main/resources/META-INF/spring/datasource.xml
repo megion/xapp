@@ -16,16 +16,46 @@
                            http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
     <context:property-placeholder location="classpath:/META-INF/spring/datasource.properties"
                                   ignore-unresolvable="true"/>
-
-    <!-- JDNI name for EntityManagerFactory is defined in src/main/resources/META-INF/persistence.xml -->
-    <jee:jndi-lookup jndi-name="java:jboss/jboss-xapp-webapp/persistencebasic" id="entityManagerFactory"
-                     expected-type="javax.persistence.EntityManagerFactory" />
-
-    <bean id="entityManager" class="org.springframework.orm.jpa.support.SharedEntityManagerBean">
-        <property name="entityManagerFactory" ref="entityManagerFactory" />
+                                                          
+    <jee:jndi-lookup jndi-name="${datasource.jndiName}" id="dataSource" expected-type="javax.sql.DataSource" />
+    
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="xapp-UN"/>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+        </property>
+        <property name="jtaDataSource" ref="dataSource"/>
+        <property name="packagesToScan">
+            <array>
+                <value>org.megion.xapp.core.entity</value>
+            </array>
+        </property>
+        <property name="mappingResources" value="META-INF/orm.xml"/>
+        <property name="jpaProperties">
+            <map>
+                <entry key="hibernate.dialect" value="${hibernate.dialect}"/>
+                <entry key="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy"/>
+                <entry key="hibernate.transaction.jta.platform"
+                       value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform"/>
+                <entry key="hibernate.hbm2ddl.auto" value="create-drop" />
+                
+                <entry key="hibernate.cache.use_second_level_cache" value="false"/>
+                <entry key="hibernate.max_fetch_depth" value="3"/>
+                <entry key="hibernate.default_batch_fetch_size" value="16"/>
+                <entry key="hibernate.jdbc.batch_size" value="20"/>
+                
+                <entry key="hibernate.show_sql" value="true"/>
+                <entry key="hibernate.format_sql" value="true"/>
+                <entry key="hibernate.use_sql_comments" value="true"/>
+            </map>
+        </property>
     </bean>
 
-    <jee:jndi-lookup jndi-name="${datasource.jndiName}" id="dataSource" expected-type="javax.sql.DataSource" />
-    <tx:jta-transaction-manager />
+    <tx:jta-transaction-manager/>
+    <tx:annotation-driven mode="proxy"/>
+
+    <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="transactionManager"/>
+    </bean>                              
 
 </beans>

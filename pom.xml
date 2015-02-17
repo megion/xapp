@@ -5,7 +5,7 @@
 	<groupId>com.megion</groupId>
 	<artifactId>xapp</artifactId>
 	<name>xapp (parent pom)</name>
-	<version>2.2.4-SNAPSHOT</version>
+	<version>2.2.5-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>
