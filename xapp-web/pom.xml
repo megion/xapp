@@ -92,7 +92,10 @@
 		<profile>
 			<id>dev</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>devEnabled</name>
+					<value>true</value>
+				</property>
 			</activation>
 			<dependencies>
 				<dependency>
@@ -105,10 +108,7 @@
 		<profile>
 			<id>prom</id>
 			<activation>
-				<property>
-					<name>promEnabled</name>
-					<value>true</value>
-				</property>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 			<dependencies>
 				<dependency>

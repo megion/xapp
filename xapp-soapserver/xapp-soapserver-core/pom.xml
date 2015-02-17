@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>com.megion.xapp.soapserver</groupId>
-	<artifactId>soapserver-core</artifactId>
+	<artifactId>xapp-soapserver-core</artifactId>
 	<packaging>jar</packaging>
 	<name>xapp-soapserver core jar</name>
 

@@ -9,7 +9,7 @@
 		<version>2.2.1-SNAPSHOT</version>
 	</parent>
 
-    <groupId>com.megion.xapp</groupId>
+	<groupId>com.megion.xapp</groupId>
 	<artifactId>xapp-core</artifactId>
 	<packaging>jar</packaging>
 	<name>xapp-core jar</name>
@@ -63,24 +63,14 @@
 			<artifactId>slf4j-simple</artifactId>
 		</dependency>
 
-		<!-- CXF -->
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-transports-http</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-frontend-jaxws</artifactId>
-		</dependency>
-
 		<dependency>
 			<groupId>com.megion.xapp.soapserver</groupId>
-			<artifactId>soapserver-wsdl</artifactId>
+			<artifactId>xapp-soapserver-wsdl</artifactId>
 			<version>${project.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>com.megion.xapp.soapserver</groupId>
-					<artifactId>soapserver-core</artifactId>
+					<artifactId>xapp-soapserver-core</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -98,7 +88,10 @@
 		<profile>
 			<id>dev</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>devEnabled</name>
+					<value>true</value>
+				</property>
 			</activation>
 			<dependencies>
 				<dependency>
@@ -106,16 +99,24 @@
 					<artifactId>xapp-resources-dev</artifactId>
 					<version>${project.version}</version>
 				</dependency>
+
+				<!-- CXF -->
+				<dependency>
+					<groupId>org.apache.cxf</groupId>
+					<artifactId>cxf-rt-transports-http</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.cxf</groupId>
+					<artifactId>cxf-rt-frontend-jaxws</artifactId>
+				</dependency>
+
 			</dependencies>
 		</profile>
 
 		<profile>
 			<id>prom</id>
 			<activation>
-				<property>
-					<name>promEnabled</name>
-					<value>true</value>
-				</property>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 			<dependencies>
 				<dependency>
@@ -123,11 +124,30 @@
 					<artifactId>xapp-resources-prom</artifactId>
 					<version>${project.version}</version>
 				</dependency>
+				
+				<!-- CXF -->
+				<dependency>
+					<groupId>org.apache.cxf</groupId>
+					<artifactId>cxf-rt-frontend-jaxws</artifactId>
+					<scope>provided</scope>
+				</dependency>
 			</dependencies>
 		</profile>
 	</profiles>
 
 	<build>
+
+		<!-- filter resources -->
+		<filters>
+			<filter>../local.properties</filter>
+		</filters>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.cxf</groupId>

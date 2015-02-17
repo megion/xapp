@@ -10,14 +10,14 @@
 	</parent>
 
 	<groupId>com.megion.xapp.soapserver</groupId>
-	<artifactId>soapserver-wsdl</artifactId>
+	<artifactId>xapp-soapserver-wsdl</artifactId>
 	<packaging>jar</packaging>
 	<name>xapp-soapserver wsdl's container jar</name>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.megion.xapp.soapserver</groupId>
-			<artifactId>soapserver-core</artifactId>
+			<artifactId>xapp-soapserver-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>

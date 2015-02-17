@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>com.megion.xapp.soapserver</groupId>
-	<artifactId>soapserver-web</artifactId>
+	<artifactId>xapp-soapserver-web</artifactId>
 	<packaging>war</packaging>
 	<name>xapp-soapserver web server</name>
 
@@ -34,7 +34,7 @@
 		
 		<dependency>
 			<groupId>com.megion.xapp.soapserver</groupId>
-			<artifactId>soapserver-core</artifactId>
+			<artifactId>xapp-soapserver-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		

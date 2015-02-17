@@ -20,9 +20,9 @@
 	</properties>
 
 	<modules>
-		<module>soapserver-web</module>
-		<module>soapserver-core</module>
-		<module>soapserver-wsdl</module>
+		<module>xapp-soapserver-web</module>
+		<module>xapp-soapserver-core</module>
+		<module>xapp-soapserver-wsdl</module>
 	</modules>
 	
 </project>
