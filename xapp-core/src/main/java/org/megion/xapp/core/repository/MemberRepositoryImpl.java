@@ -1,6 +1,7 @@
 package org.megion.xapp.core.repository;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -14,7 +15,11 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class MemberRepositoryImpl implements MemberRepository {
-    @Autowired
+	
+	private static final java.util.logging.Logger log1 = Logger.getLogger(MemberRepositoryImpl.class.getName());
+	private static final org.slf4j.Logger log2 = org.slf4j.LoggerFactory.getLogger(MemberRepositoryImpl.class);
+    
+	@Autowired
     private EntityManager em;
     
     @Autowired 
@@ -43,6 +48,9 @@ public class MemberRepositoryImpl implements MemberRepository {
     }
 
     public List<Member> findAllOrderedByName() {
+    	log1.info("log1: findAllOrderedByName");
+    	log2.info("log2: findAllOrderedByName");
+    	
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Member> criteria = cb.createQuery(Member.class);
         Root<Member> member = criteria.from(Member.class);

@@ -8,6 +8,7 @@
 /.classpath
 /.settings
 /.checkstyle
+/.tern-project
 
 /*/target
 /*/*.iml
@@ -19,6 +20,7 @@
 /*/.classpath
 /*/.settings
 /*/.checkstyle
+/*/.tern-project
 
 /*/*/target
 /*/*/*.iml
@@ -30,5 +32,6 @@
 /*/*/.classpath
 /*/*/.settings
 /*/*/.checkstyle
+/*/*/.tern-project
 
 local.properties
