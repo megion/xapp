@@ -6,7 +6,7 @@
 		<groupId>com.megion</groupId>
 		<artifactId>xapp</artifactId>
 		<relativePath>..</relativePath>
-		<version>2.2.5-SNAPSHOT</version>
+		<version>2.2.6-SNAPSHOT</version>
 	</parent>
 
 	<groupId>com.megion.xapp</groupId>

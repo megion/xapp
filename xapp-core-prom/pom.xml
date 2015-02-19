@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.megion</groupId>
+		<artifactId>xapp</artifactId>
+		<relativePath>..</relativePath>
+		<version>2.2.6-SNAPSHOT</version>
+	</parent>
+
+	<groupId>com.megion.xapp</groupId>
+	<artifactId>xapp-core-prom</artifactId>
+	<packaging>jar</packaging>
+	<name>xapp-core prom jar</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.megion.xapp</groupId>
+			<artifactId>xapp-core</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<filters>
+			<filter>../local.properties</filter>
+		</filters>
+
+		<!-- filter resources -->
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>${version.jar.plugin}</version>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<Dependencies>org.apache.cxf export</Dependencies>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

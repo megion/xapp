@@ -9,7 +9,7 @@
         <groupId>com.megion</groupId>
 		<artifactId>xapp</artifactId>
 		<relativePath>..</relativePath>
-		<version>2.2.5-SNAPSHOT</version>
+		<version>2.2.6-SNAPSHOT</version>
     </parent>
 
     <groupId>com.megion.xapp</groupId>
@@ -29,7 +29,7 @@
         <!-- xapp-core -->
 		<dependency>
 			<groupId>com.megion.xapp</groupId>
-			<artifactId>xapp-core</artifactId>
+			<artifactId>xapp-core-prom</artifactId>
 		</dependency>
     </dependencies>
 

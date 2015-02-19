@@ -2,12 +2,10 @@
 <jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.1">
 	<deployment>
 		<dependencies>
-		    <module name="org.apache.cxf" export="true" />
-		    <!-- module name="org.apache.cxf.impl" export="true" /-->
-		    <!--  
-		    <module name="org.slf4j" />
-			module name="org.apache.cxf"></module
-			<module name="org.jboss.modules"></module>-->
-		</dependencies>
+			<!-- module name="org.apache.cxf" export="true" / -->
+			<!-- module name="org.apache.cxf.impl" export="true" / -->
+			<!-- <module name="org.slf4j" /> module name="org.apache.cxf"></module 
+				<module name="org.jboss.modules"></module> -->
+		</dependencies>	
 	</deployment>
 </jboss-deployment-structure>
