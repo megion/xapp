@@ -11,9 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberServiceImpl implements MemberService {
 
 	@Autowired
-	private HelloWorldService helloWorldService;
-
-	@Autowired
 	private MemberRepository memberRepository;
 
 	@Override

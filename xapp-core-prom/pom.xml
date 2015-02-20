@@ -18,6 +18,12 @@
 		<dependency>
 			<groupId>com.megion.xapp</groupId>
 			<artifactId>xapp-core</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>jaxb-impl</artifactId>
+					<groupId>com.sun.xml.bind</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 
@@ -33,21 +39,6 @@
 				<filtering>true</filtering>
 			</resource>
 		</resources>
-
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>${version.jar.plugin}</version>
-				<configuration>
-					<archive>
-						<manifestEntries>
-							<Dependencies>org.apache.cxf export</Dependencies>
-						</manifestEntries>
-					</archive>
-				</configuration>
-			</plugin>
-		</plugins>
 	</build>
 
 </project>

@@ -49,7 +49,7 @@ public class MemberController {
             	
             	String msg = helloWorldService.sayHi("ilya");
             	System.out.println("message " + msg);
-            	
+            	 
                 return "redirect:/";
             } catch (Exception e) {
             	LOG.log(Level.SEVERE, e.getMessage(), e.getCause());
