@@ -9,7 +9,7 @@
 		<version>2.2.6-SNAPSHOT</version>
 	</parent>
 
-    <groupId>com.megion.xapp</groupId>
+	<groupId>com.megion.xapp</groupId>
 	<artifactId>xapp-web</artifactId>
 	<packaging>war</packaging>
 	<name>xapp-web web server</name>
@@ -68,8 +68,8 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		
-        <!-- Jackson -->
+
+		<!-- Jackson -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
@@ -101,6 +101,11 @@
 				<dependency>
 					<groupId>com.megion.xapp</groupId>
 					<artifactId>xapp-core-dev</artifactId>
+				</dependency>
+				<!-- dependency for jetty -->
+				<dependency>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
 				</dependency>
 			</dependencies>
 		</profile>

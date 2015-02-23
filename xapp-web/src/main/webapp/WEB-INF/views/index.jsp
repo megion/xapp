@@ -16,7 +16,7 @@
 			<img src="<c:url value="/static/resources/gfx/rhjb_eap_logo.png"/>" />
 		</div>
 		<div id="content">
-			<h1>Welcome to JBoss!28</h1>
+			<h1>Welcome to JBoss!30</h1>
 
 			<div>
 				<p>You have successfully deployed a basic SpringMVC web
