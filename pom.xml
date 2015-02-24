@@ -32,53 +32,57 @@
 
 		<version.cxf>2.4.6</version.cxf>
 		<version.javaee>6.0</version.javaee>
-		
+
 		<version.jboss.maven.plugin>7.4.Final</version.jboss.maven.plugin>
 		<version.ear.plugin>2.6</version.ear.plugin>
-        <version.ejb.plugin>2.3</version.ejb.plugin>
-        <version.jar.plugin>2.5</version.jar.plugin>
-        <version.surefire.plugin>2.10</version.surefire.plugin>
-        
+		<version.ejb.plugin>2.3</version.ejb.plugin>
+		<version.jar.plugin>2.5</version.jar.plugin>
+		<version.surefire.plugin>2.10</version.surefire.plugin>
+
+		<version.testng>6.8.8</version.testng>
+		<version.github.springtestdbunit>1.1.0</version.github.springtestdbunit>
+		<version.dbunit>2.4.9</version.dbunit>
+
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
-            
-            <!-- Define the version of the EJB jar so that we don't need 
-                to repeat ourselves in every module -->
-            <dependency>
-                <groupId>com.megion.xapp</groupId>
-                <artifactId>xapp-ejb</artifactId>
-                <version>${project.version}</version>
-                <type>ejb</type>
-            </dependency>
-            
-            <dependency>
-                <groupId>com.megion.xapp</groupId>
-                <artifactId>xapp-core</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.megion.xapp</groupId>
-                <artifactId>xapp-core-prom</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.megion.xapp</groupId>
-                <artifactId>xapp-core-dev</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            
-            <!-- Define the version of the WAR so that we don't need to repeat 
-                ourselves in every module -->
-            <dependency>
-                <groupId>com.megion.xapp</groupId>
-                <artifactId>xapp-web</artifactId>
-                <version>${project.version}</version>
-                <type>war</type>
-                <scope>compile</scope>
-            </dependency>
-            
+
+			<!-- Define the version of the EJB jar so that we don't need to repeat 
+				ourselves in every module -->
+			<dependency>
+				<groupId>com.megion.xapp</groupId>
+				<artifactId>xapp-ejb</artifactId>
+				<version>${project.version}</version>
+				<type>ejb</type>
+			</dependency>
+
+			<dependency>
+				<groupId>com.megion.xapp</groupId>
+				<artifactId>xapp-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.megion.xapp</groupId>
+				<artifactId>xapp-core-prom</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.megion.xapp</groupId>
+				<artifactId>xapp-core-dev</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<!-- Define the version of the WAR so that we don't need to repeat ourselves 
+				in every module -->
+			<dependency>
+				<groupId>com.megion.xapp</groupId>
+				<artifactId>xapp-web</artifactId>
+				<version>${project.version}</version>
+				<type>war</type>
+				<scope>compile</scope>
+			</dependency>
+
 			<dependency>
 				<groupId>taglibs</groupId>
 				<artifactId>standard</artifactId>
@@ -257,6 +261,32 @@
 				<version>${version.javaee}</version>
 			</dependency>
 
+			<!-- TEST -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${version.spring}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.testng</groupId>
+				<artifactId>testng</artifactId>
+				<version>${version.testng}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.github.springtestdbunit</groupId>
+				<artifactId>spring-test-dbunit</artifactId>
+				<version>${version.github.springtestdbunit}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.dbunit</groupId>
+				<artifactId>dbunit</artifactId>
+				<version>${version.dbunit}</version>
+				<scope>test</scope>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 
@@ -269,25 +299,24 @@
 		<module>xapp-web</module>
 		<module>xapp-ear</module>
 	</modules>
-	
+
 	<build>
-        <pluginManagement>
-            <plugins>
-                <!-- The JBoss AS plugin deploys your ear to a local JBoss 
-                    AS container -->
-                <!-- Due to Maven's lack of intelligence with EARs we need 
-                    to configure the jboss-as maven plugin to skip deployment for all modules. 
-                    We then enable it specifically in the ear module. -->
-                <plugin>
-                    <groupId>org.jboss.as.plugins</groupId>
-                    <artifactId>jboss-as-maven-plugin</artifactId>
-                    <version>${version.jboss.maven.plugin}</version>
-                    <inherited>true</inherited>
-                    <configuration>
-                        <skip>true</skip>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
+		<pluginManagement>
+			<plugins>
+				<!-- The JBoss AS plugin deploys your ear to a local JBoss AS container -->
+				<!-- Due to Maven's lack of intelligence with EARs we need to configure 
+					the jboss-as maven plugin to skip deployment for all modules. We then enable 
+					it specifically in the ear module. -->
+				<plugin>
+					<groupId>org.jboss.as.plugins</groupId>
+					<artifactId>jboss-as-maven-plugin</artifactId>
+					<version>${version.jboss.maven.plugin}</version>
+					<inherited>true</inherited>
+					<configuration>
+						<skip>true</skip>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 </project>
