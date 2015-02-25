@@ -75,6 +75,33 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		
+		<!-- TEST -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.springtestdbunit</groupId>
+			<artifactId>spring-test-dbunit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.dbunit</groupId>
+			<artifactId>dbunit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>test</scope>
+		</dependency>
 
 	</dependencies>
 
@@ -115,6 +142,16 @@
 					</execution>
 				</executions>
 			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${version.surefire.plugin}</version>
+				<configuration>
+					<useFile>false</useFile>
+				</configuration>
+			</plugin>
+			
 		</plugins>
 	</build>
 </project>

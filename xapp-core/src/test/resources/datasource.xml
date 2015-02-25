@@ -49,7 +49,7 @@
 			<map>
 				<entry key="hibernate.dialect" value="${hibernate.dialect}" />
 				<entry key="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy" />
-				<entry key="hibernate.hbm2ddl.auto" value="create-drop" />
+				<entry key="hibernate.hbm2ddl.auto" value="create" />
 				
 				<entry key="hibernate.cache.use_second_level_cache" value="false" />
 				<entry key="hibernate.max_fetch_depth" value="3" />

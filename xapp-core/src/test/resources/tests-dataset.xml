@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
     <member_basic id="0" name="John Smith" email="john.smith@mailinator.com" phone_number="2125551212" />
+    
+    <xuser id="1" username="user_1" email="user-1@mailinator.com" />
+    <xuser id="2" username="user_2" email="user-2@mailinator.com" />
+    
 </dataset>
