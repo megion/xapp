@@ -17,7 +17,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional
 	public List<User> findAllOrderedByUsername() {
-		return userRepository.findAllOrderedByUsername();
+		List<User> users = userRepository.findAllOrderedByUsername();
+		return users;
 	}
 
 }

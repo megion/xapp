@@ -9,6 +9,7 @@
 /.settings
 /.checkstyle
 /.tern-project
+/.factorypath
 
 /*/target
 /*/*.iml
@@ -21,6 +22,7 @@
 /*/.settings
 /*/.checkstyle
 /*/.tern-project
+/*/.factorypath
 
 /*/*/target
 /*/*/*.iml
@@ -33,5 +35,7 @@
 /*/*/.settings
 /*/*/.checkstyle
 /*/*/.tern-project
+/*/*/.factorypath
+
 
 local.properties

@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Email;
@@ -35,13 +36,16 @@ public class User implements Serializable {
 	@Column(nullable = false, unique = true, length = 255)
 	private String email;
 	
-	@ManyToMany/*(fetch=FetchType.LAZY, cascade = CascadeType.ALL)*/
+	@ManyToMany
     @JoinTable(
             name = "user_role",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
     )
     private Set<Role> roles = new HashSet<Role>();
+	
+	@OneToMany(mappedBy="user")
+    private Set<UserMessage> messages = new HashSet<UserMessage>();
 
 	public String getUsername() {
 		return username;
@@ -65,6 +69,14 @@ public class User implements Serializable {
 
 	public Set<Role> getRoles() {
 		return roles;
+	}
+
+	public Set<UserMessage> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(Set<UserMessage> messages) {
+		this.messages = messages;
 	}
 
 	@Override
@@ -91,6 +103,11 @@ public class User implements Serializable {
 		} else if (!username.equals(other.username))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + "]";
 	}
 
 }

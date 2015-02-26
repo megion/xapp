@@ -22,7 +22,15 @@ public class Role implements Serializable {
 	
 	@NotEmpty(message = "Authority cannot be empty")
     @Column(nullable = false, updatable = false, unique = true)
-    private String authority;
+    private final String authority;
+	
+	public Role() {
+		this.authority = null;
+	}
+	
+	public Role(String authority) {
+		this.authority = authority;
+	}
 
 	@Override
 	public int hashCode() {
@@ -48,6 +56,19 @@ public class Role implements Serializable {
 		} else if (!authority.equals(other.authority))
 			return false;
 		return true;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getAuthority() {
+		return authority;
+	}
+
+	@Override
+	public String toString() {
+		return "Role [id=" + id + ", authority=" + authority + "]";
 	}
 	
 }

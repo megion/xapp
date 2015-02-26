@@ -7,4 +7,11 @@ import org.megion.xapp.core.entity.User;
 public interface UserRepository {
 	
     List<User> findAllOrderedByUsername();
+    
+    /**
+     * @return ordered by name users list with fetched roles
+     */
+    List<User> findAllWithRolesOrderedByUsername();
+    
+    User findById(Long id);
 }

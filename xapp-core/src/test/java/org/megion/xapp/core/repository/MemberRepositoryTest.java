@@ -52,10 +52,14 @@ public class MemberRepositoryTest extends AbstractTestNGSpringContextTests {
     
     public void testUserRepository() {
     	List<User> users = userService.findAllOrderedByUsername();
-    	System.out.println("user[0].roles: " + users.get(0).getRoles());
+    	Assert.assertTrue(users.size()>0);
     	
-    	users = userRepository.findAllOrderedByUsername();
-    	System.out.println("users: " + users);
+    	users = userRepository.findAllWithRolesOrderedByUsername();
+    	for(User user: users) {
+    		System.out.println("user: " + user + " roles: " + user.getRoles());
+    	}
     	
+    	User user1 = userRepository.findById(1l);
+    	Assert.assertNotNull(user1);
     }
 }
