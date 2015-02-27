@@ -4,13 +4,13 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.megion</groupId>
+		<groupId>org.megion</groupId>
 		<artifactId>xapp</artifactId>
 		<relativePath>..</relativePath>
 		<version>2.2.6-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.megion.xapp</groupId>
+	<groupId>org.megion.xapp</groupId>
 	<artifactId>xapp-ear</artifactId>
 	<packaging>ear</packaging>
 
@@ -19,12 +19,12 @@
 	<dependencies>
 		<!-- Depend on the ejb module and war so that we can package them -->
 		<dependency>
-			<groupId>com.megion.xapp</groupId>
+			<groupId>org.megion.xapp</groupId>
 			<artifactId>xapp-web</artifactId>
 			<type>war</type>
 		</dependency>
 		<dependency>
-			<groupId>com.megion.xapp</groupId>
+			<groupId>org.megion.xapp</groupId>
 			<artifactId>xapp-ejb</artifactId>
 			<type>ejb</type>
 		</dependency>

@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.megion</groupId>
+	<groupId>org.megion</groupId>
 	<artifactId>xapp</artifactId>
 	<name>xapp (parent pom)</name>
 	<version>2.2.6-SNAPSHOT</version>
@@ -53,24 +53,24 @@
 			<!-- Define the version of the EJB jar so that we don't need to repeat 
 				ourselves in every module -->
 			<dependency>
-				<groupId>com.megion.xapp</groupId>
+				<groupId>org.megion.xapp</groupId>
 				<artifactId>xapp-ejb</artifactId>
 				<version>${project.version}</version>
 				<type>ejb</type>
 			</dependency>
 
 			<dependency>
-				<groupId>com.megion.xapp</groupId>
+				<groupId>org.megion.xapp</groupId>
 				<artifactId>xapp-core</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.megion.xapp</groupId>
+				<groupId>org.megion.xapp</groupId>
 				<artifactId>xapp-core-prom</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.megion.xapp</groupId>
+				<groupId>org.megion.xapp</groupId>
 				<artifactId>xapp-core-dev</artifactId>
 				<version>${project.version}</version>
 			</dependency>
@@ -78,7 +78,7 @@
 			<!-- Define the version of the WAR so that we don't need to repeat ourselves 
 				in every module -->
 			<dependency>
-				<groupId>com.megion.xapp</groupId>
+				<groupId>org.megion.xapp</groupId>
 				<artifactId>xapp-web</artifactId>
 				<version>${project.version}</version>
 				<type>war</type>

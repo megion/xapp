@@ -3,20 +3,20 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.megion.xapp</groupId>
+		<groupId>org.megion.xapp</groupId>
 		<artifactId>xapp-soapserver</artifactId>
 		<relativePath>..</relativePath>
 		<version>2.2.6-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.megion.xapp.soapserver</groupId>
+	<groupId>org.megion.xapp.soapserver</groupId>
 	<artifactId>xapp-soapserver-wsdl</artifactId>
 	<packaging>jar</packaging>
 	<name>xapp-soapserver wsdl's container jar</name>
 
 	<dependencies>
 		<dependency>
-			<groupId>com.megion.xapp.soapserver</groupId>
+			<groupId>org.megion.xapp.soapserver</groupId>
 			<artifactId>xapp-soapserver-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>

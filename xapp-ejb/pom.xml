@@ -6,13 +6,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.megion</groupId>
+        <groupId>org.megion</groupId>
 		<artifactId>xapp</artifactId>
 		<relativePath>..</relativePath>
 		<version>2.2.6-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.megion.xapp</groupId>
+    <groupId>org.megion.xapp</groupId>
     <artifactId>xapp-ejb</artifactId>
     <packaging>ejb</packaging>
 
@@ -28,7 +28,7 @@
         
         <!-- xapp-core -->
 		<dependency>
-			<groupId>com.megion.xapp</groupId>
+			<groupId>org.megion.xapp</groupId>
 			<artifactId>xapp-core-prom</artifactId>
 		</dependency>
     </dependencies>

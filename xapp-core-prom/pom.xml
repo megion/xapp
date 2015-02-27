@@ -3,20 +3,20 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.megion</groupId>
+		<groupId>org.megion</groupId>
 		<artifactId>xapp</artifactId>
 		<relativePath>..</relativePath>
 		<version>2.2.6-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.megion.xapp</groupId>
+	<groupId>org.megion.xapp</groupId>
 	<artifactId>xapp-core-prom</artifactId>
 	<packaging>jar</packaging>
 	<name>xapp-core prom jar</name>
 
 	<dependencies>
 		<dependency>
-			<groupId>com.megion.xapp</groupId>
+			<groupId>org.megion.xapp</groupId>
 			<artifactId>xapp-core</artifactId>
 			<exclusions>
 				<exclusion>
