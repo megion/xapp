@@ -59,6 +59,7 @@ public class MemberRepositoryTest extends AbstractTestNGSpringContextTests {
     		System.out.println("user: " + user + " roles: " + user.getRoles());
     	}
     	
+    	
     	User user1 = userRepository.findById(1l);
     	Assert.assertNotNull(user1);
     }

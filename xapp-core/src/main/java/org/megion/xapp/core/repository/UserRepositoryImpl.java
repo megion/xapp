@@ -8,6 +8,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Root;
 
+import org.megion.xapp.core.aop.annotation.MyLog;
 import org.megion.xapp.core.entity.Member;
 import org.megion.xapp.core.entity.User;
 import org.megion.xapp.core.entity.User_;
@@ -30,6 +31,7 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	@Override
+	@MyLog
 	public List<User> findAllWithRolesOrderedByUsername() {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<User> criteria = cb.createQuery(User.class);

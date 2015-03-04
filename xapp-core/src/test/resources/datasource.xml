@@ -56,9 +56,9 @@
 				<entry key="hibernate.default_batch_fetch_size" value="16" />
 				<entry key="hibernate.jdbc.batch_size" value="20" />
 
-				<entry key="hibernate.show_sql" value="true" />
-				<entry key="hibernate.format_sql" value="true" />
-				<entry key="hibernate.use_sql_comments" value="true" />
+				<entry key="hibernate.show_sql" value="false" />
+				<entry key="hibernate.format_sql" value="false" />
+				<entry key="hibernate.use_sql_comments" value="false" />
 			</map>
 		</property>
 	</bean>
@@ -68,7 +68,7 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 
-	<tx:annotation-driven mode="proxy" />
+	<tx:annotation-driven mode="proxy" order="0" />
 
 	<bean id="transactionTemplate"
 		class="org.springframework.transaction.support.TransactionTemplate">

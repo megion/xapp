@@ -10,6 +10,7 @@
                            http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
                            http://www.springframework.org/schema/data/jpa
                            http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+    <import resource="classpath:META-INF/spring/aop.xml"/>
     <import resource="classpath:META-INF/spring/jaxws-client.xml"/>
 
     <!--  context:spring-configured/ -->
@@ -20,5 +21,16 @@
     
     <context:component-scan base-package="org.megion.xapp.core.service" />
     <context:component-scan base-package="org.megion.xapp.core.repository" />
+     <context:component-scan base-package="org.megion.xapp.test.beans" />
+    
+    <bean id="checkTransactionRegisry" class="org.megion.xapp.core.aop.AnnotationRegistry">
+		<property name="interceptorBeanClass"
+			value="org.megion.xapp.test.aop.interceptor.CheckTransactionInterceptor" />
+	    <property name="annotationType"
+			value="org.megion.xapp.test.aop.annotation.CheckTransaction" />
+		<property name="order" value="4" />
+	</bean>
+    
+   
 
 </beans>
