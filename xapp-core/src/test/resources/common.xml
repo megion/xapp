@@ -21,5 +21,6 @@
     
     <context:component-scan base-package="org.megion.xapp.core.service" />
     <context:component-scan base-package="org.megion.xapp.core.repository" />
+    <context:component-scan base-package="org.megion.xapp.test.context.beans" />
     
 </beans>

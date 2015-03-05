@@ -1,4 +1,4 @@
-package org.megion.xapp.core.service;
+package org.megion.xapp.test.context.beans;
 
 import org.megion.xapp.core.aop.annotation.CheckTransaction;
 import org.springframework.stereotype.Service;
@@ -8,11 +8,17 @@ import org.springframework.transaction.annotation.Transactional;
 public class AopBeanImpl implements AopBean {
 
 	@Override
-	@Transactional
 	@CheckTransaction(required=true)
 	public void requiredTransaction() {
 		System.out.println("call requiredTransaction");
 	}
+
+    @Override
+    @Transactional
+    @CheckTransaction(required=false)
+    public void withoutTransaction() {
+        System.out.println("call withoutTransaction");
+    }
 
 
 }

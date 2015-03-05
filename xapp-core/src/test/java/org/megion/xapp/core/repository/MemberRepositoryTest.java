@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.megion.xapp.core.entity.Member;
 import org.megion.xapp.core.entity.User;
-import org.megion.xapp.core.service.AopBean;
 import org.megion.xapp.core.service.UserService;
 import org.megion.xapp.test.context.CommonContext;
 import org.megion.xapp.test.context.DatasourceContext;
@@ -42,12 +41,6 @@ public class MemberRepositoryTest extends AbstractTestNGSpringContextTests {
 	private UserRepository userRepository;
 	@Autowired
 	private UserService userService;
-	@Autowired
-	private AopBean aopBean;
-	
-    public void testCheckTransaction() {
-    	//aopBean.requiredTransaction();
-    }
 	
     public void testFindByEmail() {
     	Member member = memberRepository.findByEmail("john.smith@mailinator.com");

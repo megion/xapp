@@ -2,7 +2,9 @@ package org.megion.xapp.core.aop.interceptor;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
+import org.megion.xapp.core.aop.AopAnnotationUtils;
 import org.megion.xapp.core.aop.annotation.CheckTransaction;
+import org.springframework.aop.support.AopUtils;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
@@ -13,8 +15,9 @@ public class CheckTransactionInterceptor implements MethodInterceptor {
 		System.out.println("CheckTransactionInterceptor method "
 				+ invocation.getMethod());
 
-		CheckTransaction checkAnnotation = AnnotationUtils.findAnnotation(
-				invocation.getMethod(), CheckTransaction.class);
+        Class<?> targetClass = (invocation.getThis() != null ? AopUtils.getTargetClass(invocation.getThis()) : null);
+
+        CheckTransaction checkAnnotation = AopAnnotationUtils.findAnnotation(invocation.getMethod(), targetClass, CheckTransaction.class);
 
 		boolean transactionFound = TransactionSynchronizationManager
 				.isActualTransactionActive();

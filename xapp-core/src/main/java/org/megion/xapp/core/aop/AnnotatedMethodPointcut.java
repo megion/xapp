@@ -57,17 +57,18 @@ public class AnnotatedMethodPointcut<A extends Annotation> implements Pointcut, 
 
 			@Override
 			public boolean matches(Method method, Class<?> targetClass) {
-				CacheKey key = new CacheKey(method);
+				CacheKey key = new CacheKey(method, targetClass==null?null:targetClass.getName());
 				if (cache.contains(key)) {
 					System.out.println("########## contains targetClass "
-							+ targetClass.getCanonicalName() + " method: " + method);
+							+ targetClass.getCanonicalName() + " method: " + method + " targetClass " + targetClass);
 					return true;
 				} else {
-					boolean b = containsAnnotation(method, targetClass);
-					if (!b) {
-						return false;
-					}
-					System.out.println("++++++++++ add method: " + method);
+                    A ann = AopAnnotationUtils.findAnnotation(method, targetClass, annotationType);
+					if (ann==null) {
+                        return false;
+                    }
+					System.out.println("++++++++++ add method: " + method + " targetClass " + targetClass);
+                    cache.add(key);
 					return true;
 				}
 			}
@@ -78,79 +79,43 @@ public class AnnotatedMethodPointcut<A extends Annotation> implements Pointcut, 
 			}
 		};
 	}
-	
-	private CacheKey addKey(Method method) {
-		CacheKey key = new CacheKey(method);
-		cache.add(key);
-		return key;
-	}
-
-	private boolean containsAnnotation(Method method, Class<?> targetClass) {
-		// Ignore CGLIB subclasses - introspect the actual user class.
-		Class<?> userClass = ClassUtils.getUserClass(targetClass);
-
-		// The method may be on an interface, but we need attributes from the
-		// target class.
-		// If the target class is null, the method will be unchanged.
-		Method specificMethod = ClassUtils.getMostSpecificMethod(method,
-				userClass);
-
-		// First try is the method in the target class.
-		A ml = AnnotationUtils.getAnnotation(specificMethod, annotationType);
-		if (ml != null) {
-			addKey(specificMethod);
-			addKey(method);
-			return true;
-		}
-
-		if (specificMethod != method) {
-			// Fallback is to look at the original method.
-			ml = AnnotationUtils.getAnnotation(method, annotationType);
-			if (ml != null) {
-				addKey(method);
-				return true;
-			}
-		}
-		return false;
-	}
 
 	private static class CacheKey {
 		private final Method method;
+        private final String className;
 
-		public CacheKey(Method method) {
-			this.method = method;
-		}
+        private CacheKey(Method method, String className) {
+            this.method = method;
+            this.className = className;
+        }
 
-		@Override
-		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result
-					+ ((method == null) ? 0 : method.hashCode());
-			return result;
-		}
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
 
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			CacheKey other = (CacheKey) obj;
-			if (method == null) {
-				if (other.method != null)
-					return false;
-			} else if (!method.equals(other.method))
-				return false;
-			return true;
-		}
+            CacheKey cacheKey = (CacheKey) o;
 
-		@Override
-		public String toString() {
-			return "CacheKey [method=" + method + "]";
-		}
-	}
+            if (className != null ? !className.equals(cacheKey.className) : cacheKey.className != null) return false;
+            if (method != null ? !method.equals(cacheKey.method) : cacheKey.method != null) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = method != null ? method.hashCode() : 0;
+            result = 31 * result + (className != null ? className.hashCode() : 0);
+            return result;
+        }
+
+        @Override
+        public String toString() {
+            return "CacheKey{" +
+                    "method=" + method +
+                    ", className='" + className + '\'' +
+                    '}';
+        }
+    }
 
 }
