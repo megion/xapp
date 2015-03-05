@@ -1,30 +1,30 @@
 package org.megion.xapp.core.aop;
 
 import java.io.Serializable;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
-import org.megion.xapp.core.aop.annotation.MyLog;
 import org.springframework.aop.ClassFilter;
 import org.springframework.aop.MethodMatcher;
 import org.springframework.aop.Pointcut;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.util.ClassUtils;
 
-public class AnnotatedMethodPointcut implements Pointcut, Serializable {
+public class AnnotatedMethodPointcut<A extends Annotation> implements Pointcut, Serializable {
 
 	private static final long serialVersionUID = 4533447839260186274L;
 
-	private final Class<?> annotationType;
+	private final Class<A> annotationType;
 
 	final Set<CacheKey> cache = new CopyOnWriteArraySet<CacheKey>();
 
-	public Class<?> getAnnotationType() {
+	public Class<A> getAnnotationType() {
 		return annotationType;
 	}
 
-	public AnnotatedMethodPointcut(Class<?> annotationType) {
+	public AnnotatedMethodPointcut(Class<A> annotationType) {
 		this.annotationType = annotationType;
 	}
 
@@ -57,19 +57,19 @@ public class AnnotatedMethodPointcut implements Pointcut, Serializable {
 
 			@Override
 			public boolean matches(Method method, Class<?> targetClass) {
-				//CacheKey key = new CacheKey(method);
-				/*if (cache.contains(key)) {
+				CacheKey key = new CacheKey(method);
+				if (cache.contains(key)) {
 					System.out.println("########## contains targetClass "
 							+ targetClass.getCanonicalName() + " method: " + method);
 					return true;
-				} else {*/
+				} else {
 					boolean b = containsAnnotation(method, targetClass);
 					if (!b) {
 						return false;
 					}
 					System.out.println("++++++++++ add method: " + method);
 					return true;
-				//}
+				}
 			}
 
 			@Override
@@ -96,7 +96,7 @@ public class AnnotatedMethodPointcut implements Pointcut, Serializable {
 				userClass);
 
 		// First try is the method in the target class.
-		MyLog ml = AnnotationUtils.getAnnotation(specificMethod, MyLog.class);
+		A ml = AnnotationUtils.getAnnotation(specificMethod, annotationType);
 		if (ml != null) {
 			addKey(specificMethod);
 			addKey(method);
@@ -105,7 +105,7 @@ public class AnnotatedMethodPointcut implements Pointcut, Serializable {
 
 		if (specificMethod != method) {
 			// Fallback is to look at the original method.
-			ml = AnnotationUtils.getAnnotation(method, MyLog.class);
+			ml = AnnotationUtils.getAnnotation(method, annotationType);
 			if (ml != null) {
 				addKey(method);
 				return true;

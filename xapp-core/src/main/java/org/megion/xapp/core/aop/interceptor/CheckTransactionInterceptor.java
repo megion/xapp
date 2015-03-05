@@ -1,8 +1,8 @@
-package org.megion.xapp.test.aop.interceptor;
+package org.megion.xapp.core.aop.interceptor;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
-import org.megion.xapp.test.aop.annotation.CheckTransaction;
+import org.megion.xapp.core.aop.annotation.CheckTransaction;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 

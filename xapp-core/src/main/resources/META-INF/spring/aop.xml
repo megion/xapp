@@ -16,6 +16,14 @@
 			value="org.megion.xapp.core.aop.annotation.MyLog" />
 		<property name="order" value="2" />
 	</bean>
+	
+	<bean id="checkTransactionRegisry" class="org.megion.xapp.core.aop.AnnotationRegistry">
+		<property name="interceptorBeanClass"
+			value="org.megion.xapp.core.aop.interceptor.CheckTransactionInterceptor" />
+	    <property name="annotationType"
+			value="org.megion.xapp.core.aop.annotation.CheckTransaction" />
+		<property name="order" value="4" />
+	</bean>
 
 </beans>
 

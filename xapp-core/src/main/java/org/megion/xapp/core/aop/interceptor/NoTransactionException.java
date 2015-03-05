@@ -1,4 +1,4 @@
-package org.megion.xapp.test.aop.interceptor;
+package org.megion.xapp.core.aop.interceptor;
 
 public class NoTransactionException extends RuntimeException {
 

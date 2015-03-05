@@ -21,16 +21,5 @@
     
     <context:component-scan base-package="org.megion.xapp.core.service" />
     <context:component-scan base-package="org.megion.xapp.core.repository" />
-     <context:component-scan base-package="org.megion.xapp.test.beans" />
     
-    <bean id="checkTransactionRegisry" class="org.megion.xapp.core.aop.AnnotationRegistry">
-		<property name="interceptorBeanClass"
-			value="org.megion.xapp.test.aop.interceptor.CheckTransactionInterceptor" />
-	    <property name="annotationType"
-			value="org.megion.xapp.test.aop.annotation.CheckTransaction" />
-		<property name="order" value="4" />
-	</bean>
-    
-   
-
 </beans>
